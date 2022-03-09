@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Gear } = require("../Models");
-const { modelName } = require("../Models/Gear");
+
 
 router.get("/", async (req, res) => {
     try {
@@ -13,11 +13,12 @@ router.get("/", async (req, res) => {
     }
 });
 
+
 // GEAR CREATE ROUTE
 router.post("/", async (req, res, next) => {
     try {
         const gear = await Gear.create(req.body);
-        return res.status(200).json(gear)
+        return res.json(gear)
     } catch (error) {
         //send error
         res.status(400).json(error);

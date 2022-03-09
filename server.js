@@ -5,14 +5,14 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
-
+const controllers = require("./Controllers");
 mongoose.connect(MONGODB_URL, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
 });
 
 mongoose.connection
-    .on("open", () => console.log("Your are connected to mongoose"))
+    .on("open", () => console.log("Your are connected to mongoose..*..*..*..*"))
     .on("close", () => console.log("Your are disconnected from mongoose"))
     .on("error", (error) => console.log(error));
 
@@ -23,7 +23,11 @@ mongoose.connection
 app.use(cors()); // to prevent cors errors, open access to all origins
 app.use(morgan("dev")); // logging
 app.use(express.json()); // parse json bodies
+////////my controllers middleware/////////
+app.use("/gear", controllers.gear)
 
-
+app.get('/', (req, res) => {
+    res.send("hello world");
+});
 
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));
