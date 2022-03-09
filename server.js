@@ -1,12 +1,10 @@
-
 require("dotenv").config();
-
 const { PORT = 3000, MONGODB_URL } = process.env;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+const morgan = require("morgan");
 
 mongoose.connect(MONGODB_URL, {
     useUnifiedTopology: true,
@@ -19,9 +17,13 @@ mongoose.connection
     .on("error", (error) => console.log(error));
 
 
-app.get("/", (req, res) => {
-    res.send("hello world");
-});
+///////////////////////////////
+// MiddleWare
+////////////////////////////////
+app.use(cors()); // to prevent cors errors, open access to all origins
+app.use(morgan("dev")); // logging
+app.use(express.json()); // parse json bodies
+
 
 
 app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));
