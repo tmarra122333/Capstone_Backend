@@ -5,7 +5,8 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
-const controllers = require("./Controllers");
+const controllers = require("./Controllers/");
+
 mongoose.connect(MONGODB_URL, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
@@ -25,6 +26,7 @@ app.use(morgan("dev")); // logging
 app.use(express.json()); // parse json bodies
 ////////my controllers middleware/////////
 app.use("/gear", controllers.gear)
+app.use("/artist", controllers.artist)
 
 app.get('/', (req, res) => {
     res.send("hello world");
