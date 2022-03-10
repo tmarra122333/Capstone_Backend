@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const artistSchema = new mongoose.Schema({                   //instantiating a new instance of mongoose schema
+const ArtistSchema = new mongoose.Schema({                   //instantiating a new instance of mongoose schema
     image: {
         type: String,
         default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
@@ -19,5 +19,4 @@ const artistSchema = new mongoose.Schema({                   //instantiating a n
     }
 });
 
-const artist = mongoose.model('Artist', artistSchema);
-module.exports = artist;
+module.exports = Artist = mongoose.model("Gear", ArtistSchema);
