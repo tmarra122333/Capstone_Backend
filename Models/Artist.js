@@ -19,4 +19,4 @@ const artistSchema = new mongoose.Schema({                   //instantiating a n
     }
 });
 
-module.exports = Artist = mongoose.model("Gear", artistSchema);
+module.exports = Artist = mongoose.model("Artist", artistSchema);
