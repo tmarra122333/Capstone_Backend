@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { Gear } = require("../Models");
+const { Book } = require("../Models");
 
 router.get("/", async (req, res) => {
     try {
 
-        res.json(await Gear.find({}));
+        res.json(await Book.find({}));
     } catch (error) {
 
         res.status(400).json(error);
@@ -15,8 +15,8 @@ router.get("/", async (req, res) => {
 // GEAR CREATE ROUTE
 router.post("/", async (req, res, next) => {
     try {
-        const gear = await Gear.create(req.body);
-        return res.status(200).json(gear)
+        const book = await Book.create(req.body);
+        return res.status(200).json(book)
     } catch (error) {
         //send error
         res.status(400).json(error);
@@ -28,7 +28,7 @@ router.put("/:id", async (req, res) => {
     try {
 
         res.json(
-            await Gear.findByIdAndUpdate(req.params.id, req.body, { new: true })
+            await Book.findByIdAndUpdate(req.params.id, req.body, { new: true })
         );
     } catch (error) {
 
@@ -39,7 +39,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
 
-        res.json(await Gear.findByIdAndRemove(req.params.id));
+        res.json(await Book.findByIdAndRemove(req.params.id));
     } catch (error) {
 
         res.status(400).json(error);
