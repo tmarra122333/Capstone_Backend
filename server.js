@@ -29,6 +29,7 @@ app.use(express.json()); // parse json bodies
 ////////my controllers middleware/////////
 app.use("/gear", controllers.gear)
 app.use("/artist", controllers.artist)
+app.use("/book", controllers.book)
 
 app.get('/', (req, res) => {
     res.send("hello world");
