@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { Gear } = require("../Models");
 
-
 router.get("/", async (req, res) => {
     try {
 
@@ -13,16 +12,21 @@ router.get("/", async (req, res) => {
     }
 });
 
-
 // GEAR CREATE ROUTE
 router.post("/", async (req, res, next) => {
     try {
         const gear = await Gear.create(req.body);
-        return res.json(gear)
+        return res.status(200).json(gear)
     } catch (error) {
         //send error
         res.status(400).json(error);
     }
+});
+
+//Gear Show Page Route
+router.get("/:id", async (req, res,) => {
+    const gear = await Gear.findById(req.params.id)
+    res.status(400).json(gear)
 });
 
 router.put("/:id", async (req, res) => {
