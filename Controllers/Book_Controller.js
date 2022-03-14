@@ -23,6 +23,16 @@ router.post("/", async (req, res, next) => {
     }
 });
 
+router.get("/:id", async (req, res) => {
+    try {
+
+        res.json(await Book.find({}));
+    } catch (error) {
+
+        res.status(400).json(error);
+    }
+});
+
 
 router.put("/:id", async (req, res) => {
     try {
