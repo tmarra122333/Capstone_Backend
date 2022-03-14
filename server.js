@@ -7,7 +7,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const controllers = require("./Controllers/");
 
-mongoose.connect(MONGODB_URL, {
+mongoose.connect("MONGODB_URL", {
     useUnifiedTopology: true,
     useNewUrlParser: true,
 });
