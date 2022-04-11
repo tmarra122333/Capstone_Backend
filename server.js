@@ -17,13 +17,13 @@ mongoose.connection
     .on("close", () => console.log("Your are disconnected from mongoose"))
     .on("error", (error) => console.log(error));
 
-// var corsOptions = {
-//     origin: "http://localhost:3000"
-// };
-
 var corsOptions = {
-        origin: "https://capstonecosmic.herokuapp.com/"
-    };
+    origin: "http://localhost:3000"
+};
+
+// var corsOptions = {
+//         origin: "https://capstonecosmic.herokuapp.com/"
+//     };
 
 ///////////////////////////////
 // MiddleWare
